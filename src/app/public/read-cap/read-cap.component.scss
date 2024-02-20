@@ -1,0 +1,16 @@
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 30px;
+}
+.verse {
+    width: 50%;
+    font-weight: 300;
+}
+.id_verse{
+    font-style: italic;
+    color: rgb(58, 58, 58);
+}
