@@ -4,6 +4,17 @@
             <p><span class="id_verse">{{x.ver_versiculo}}.</span> {{x.ver_texto}}</p>
         </div>
     </div>
-    <div></div>
-    <button mat-icon-button>Próximo</button>
+    <div class="navigation">
+        <div class="box" *ngFor="let x of livros">
+            <a class="livro" mat-raised-button href="http://localhost:4200/6/{{x.liv_posicao}}/1">{{x.liv_nome}}</a>
+        </div>
+    </div>
+    <div class="buttons" (click)="previous()">
+        <button mat-mini-fab color="primary">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" (click)="next()">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
 </div>
