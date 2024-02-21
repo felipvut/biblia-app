@@ -29,7 +29,7 @@
     padding-bottom: 3rem;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
- 
+    grid-template-rows: repeat(20, 10%);
 }
 .livro{
     overflow: hidden;
@@ -42,5 +42,6 @@
     justify-content: center;
 }
 .example-full-width {
+    padding: 1rem;
     width: 100%;
   }
