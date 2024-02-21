@@ -1,7 +1,7 @@
 
 .content {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 57% 43%;
     margin: 30px;
 }
 .verse {
@@ -14,21 +14,33 @@
 .buttons{
     position: fixed;
     z-index: 2;
+    left: 0;
     bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.buttons-content{
     width: 90%;
     display: flex;
     justify-content: space-between;
 }
 .navigation{
+    padding-bottom: 3rem;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
  
 }
 .livro{
     overflow: hidden;
+    color: #3a8ed7;
+    text-align: center;
 }
 .box{
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.example-full-width {
+    width: 100%;
+  }

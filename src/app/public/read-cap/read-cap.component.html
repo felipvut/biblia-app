@@ -1,20 +1,29 @@
 <div class="content">
     <div>
+        <h2>{{livro}} {{capitule}}</h2>
         <div class="verse" *ngFor="let x of versicules">
             <p><span class="id_verse">{{x.ver_versiculo}}.</span> {{x.ver_texto}}</p>
         </div>
     </div>
-    <div class="navigation">
-        <div class="box" *ngFor="let x of livros">
-            <a class="livro" mat-raised-button href="http://localhost:4200/6/{{x.liv_posicao}}/1">{{x.liv_nome}}</a>
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Pesquisar Livro</mat-label>
+            <input ngModel="search" matInput>
+        </mat-form-field>
+        <div class="navigation">
+            <div class="box" *ngFor="let x of livros">
+                <a class="livro" href="http://localhost:4200/6/{{x.liv_posicao}}/1">{{x.liv_nome}}</a>
+            </div>
         </div>
     </div>
-    <div class="buttons" (click)="previous()">
-        <button mat-mini-fab color="primary">
-            <mat-icon>keyboard_arrow_left</mat-icon>
-        </button>
-        <button mat-mini-fab color="primary" (click)="next()">
-            <mat-icon>keyboard_arrow_right</mat-icon>
-        </button>
+    <div class="buttons">
+        <div class="buttons-content">
+            <button mat-mini-fab color="primary" (click)="previous()">
+                <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" (click)="next()">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+        </div>
     </div>
 </div>

@@ -15,6 +15,8 @@ export class ReadCapComponent extends Eviroment implements OnInit {
   capitule: any = null
   versicules: any[] = []
   livros: any[] = []
+  livro: string = ""
+  search: any = null
   constructor(
     private activatedRoute : ActivatedRoute,
     private router: Router,
@@ -22,6 +24,9 @@ export class ReadCapComponent extends Eviroment implements OnInit {
   ) {
     super();
     route.params.subscribe(val => {
+      this.version = val['version']
+      this.book = val['book']
+      this.capitule = val['capitule']
       this.getVersicules()
     });
   }
@@ -35,6 +40,11 @@ export class ReadCapComponent extends Eviroment implements OnInit {
 
   async getLivros() {
     this.livros = (await axios.get(this.url + "/livros")).data
+    for(let x of this.livros) {
+      if(x.liv_id == this.book) {
+        this.livro = x.liv_nome
+      }
+    }
     console.log(this.livros)
   }
 
@@ -46,10 +56,10 @@ export class ReadCapComponent extends Eviroment implements OnInit {
   }
 
   next(){
-    // this.router.navigate(['/'+this.version+'/'+this.book+'/'+(Number(this.capitule) + 1).toString()])
+    this.router.navigate(['/'+this.version+'/'+this.book+'/'+(Number(this.capitule) + 1).toString()])
   }
 
   previous(){
-    // this.router.navigate(['/'+this.version+'/'+this.book+'/'+(Number(this.capitule) - 1).toString()])
+    this.router.navigate(['/'+this.version+'/'+this.book+'/'+(Number(this.capitule) - 1).toString()])
   }
 }
