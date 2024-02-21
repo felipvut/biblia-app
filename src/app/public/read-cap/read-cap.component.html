@@ -1,11 +1,11 @@
 <div class="content">
-    <div>
+    <div class="text-content">
         <h2>{{livro}} {{capitule}}</h2>
         <div class="verse" *ngFor="let x of versicules">
             <p><span class="id_verse">{{x.ver_versiculo}}.</span> {{x.ver_texto}}</p>
         </div>
     </div>
-    <div>
+    <div class="search-content">
         <mat-form-field class="example-full-width">
             <mat-label>Pesquisar Livro</mat-label>
             <input ngModel="search" matInput>

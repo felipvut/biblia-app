@@ -2,7 +2,7 @@
 .content {
     display: grid;
     grid-template-columns: 57% 43%;
-    margin: 30px;
+    width: 100%;
 }
 .verse {
     font-weight: 300;
@@ -42,6 +42,11 @@
     justify-content: center;
 }
 .example-full-width {
-    padding: 1rem;
     width: 100%;
-  }
+}
+.text-content{
+    padding: 1rem;
+}
+.search-content{
+    padding: 1rem;
+}
