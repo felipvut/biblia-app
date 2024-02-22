@@ -9,11 +9,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { ReadCapComponent } from './public/read-cap/read-cap.component';
 import {MatInputModule} from '@angular/material/input';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { LivrosComponent } from './public/livros/livros.component';
+import { VersoesComponent } from './public/versoes/versoes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReadCapComponent
+    ReadCapComponent,
+    LivrosComponent,
+    VersoesComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,8 @@ import {MatInputModule} from '@angular/material/input';
     MatIconModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

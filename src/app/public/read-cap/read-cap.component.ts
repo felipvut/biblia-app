@@ -17,6 +17,7 @@ export class ReadCapComponent extends Eviroment implements OnInit {
   livros: any[] = []
   livro: string = ""
   search: any = null
+  capitulos: any = []
   constructor(
     private activatedRoute : ActivatedRoute,
     private router: Router,
@@ -36,6 +37,7 @@ export class ReadCapComponent extends Eviroment implements OnInit {
     this.capitule = this.activatedRoute.snapshot.paramMap.get("capitule")
     this.getVersicules()
     this.getLivros()
+    this.getCapitules()
   }
 
   async getLivros() {
@@ -52,6 +54,13 @@ export class ReadCapComponent extends Eviroment implements OnInit {
     const versicules = await axios.get(`${this.url}/versiculos/${this.version}/${this.book}/${this.capitule}`)
     if(versicules) {
       this.versicules = versicules.data
+    }
+  }
+
+  async getCapitules() {
+    const capitulos = await axios.get(`${this.url}/capitules/${this.book}`)
+    if(capitulos) {
+      this.capitulos = capitulos.data
     }
   }
 

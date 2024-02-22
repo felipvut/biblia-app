@@ -1,0 +1,14 @@
+<div class="container">
+    <div>
+        <h1>Antigo Testamento</h1>
+        <div *ngFor="let x of antigoTestamento">
+            <a href="http://localhost:4200/6/{{x.liv_id}}/1" class="link">{{x.liv_nome}}</a>
+        </div>
+    </div>
+    <div>
+        <h1>Novo Testamento</h1>
+        <div *ngFor="let x of novoTestamento">
+            <a href="http://localhost:4200/6/{{x.liv_id}}/1" class="link">{{x.liv_nome}}</a>
+        </div>
+    </div>
+</div>
