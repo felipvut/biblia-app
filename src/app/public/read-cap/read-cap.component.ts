@@ -14,7 +14,9 @@ export class ReadCapComponent extends Eviroment implements OnInit {
   book: any = null
   capitule: any = null
   versicules: any[] = []
-  livros: any[] = []
+  livros: any = []
+  livroPrevius: any = []
+  livroNext: any = []
   livro: string = ""
   search: any = null
   capitulos: any = []
@@ -28,6 +30,8 @@ export class ReadCapComponent extends Eviroment implements OnInit {
       this.version = val['version']
       this.book = val['book']
       this.capitule = val['capitule']
+      this.getLivros()
+      this.getCapitules()
       this.getVersicules()
     });
   }
@@ -44,6 +48,7 @@ export class ReadCapComponent extends Eviroment implements OnInit {
     if(versicules) {
       this.livro = versicules.data.livro
       this.versicules = versicules.data.versicules
+      this.getLivros()
     }
   }
 
@@ -54,11 +59,44 @@ export class ReadCapComponent extends Eviroment implements OnInit {
     }
   }
 
+  async getLivros() {
+    this.livros = await axios.get(this.url + "/livros")
+    this.livros = this.livros.data
+    for(let x in this.livros) {
+      if(this.livros[x].liv_nome == this.livro) {
+        if(this.livros[Number(x) + 1]) {
+          this.livroNext = this.livros[Number(x) + 1]
+        }
+        if(this.livros[Number(x) - 1]) {
+          this.livroPrevius = this.livros[Number(x) +- 1]
+        }
+      }
+    }
+    console.log(this.livroNext)
+    console.log(this.livroPrevius)
+    }
+
   next(){
-    this.router.navigate(['/'+this.version+'/'+this.book+'/'+(Number(this.capitule) + 1).toString()])
+    if(!this.capitulos[Number(this.capitule)]) {
+      if(this.livroNext?.liv_abreviado) {
+        this.router.navigate(['/'+this.version+'/'+ this.livroNext.liv_abreviado +'/1'.toString()])
+      } else {
+        return
+      }
+    } else {
+      this.router.navigate(['/'+this.version+'/'+this.book+'/'+(Number(this.capitule) + 1).toString()])
+    }
   }
 
   previous(){
-    this.router.navigate(['/'+this.version+'/'+this.book+'/'+(Number(this.capitule) - 1).toString()])
+    if(!this.capitulos[Number(this.capitule -1) -1]) {
+      if(this.livroNext?.liv_abreviado) {
+        this.router.navigate(['/'+this.version+'/' + this.livroPrevius.liv_abreviado +'/1'])
+      } else {
+        return
+      }
+    } else {
+      this.router.navigate(['/'+this.version+'/'+this.book+'/'+(Number(this.capitule) - 1).toString()])
+    }
   }
 }
