@@ -1,5 +1,5 @@
 .spacer{
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .container {
   height: 100vh;
@@ -15,12 +15,13 @@
 }
 
 .sidenav {
-  padding: 20px;
+  background-color:#3F51B5;
+  color: #fff;
+  padding: 10px;
 }
 .sidebar-item{
     cursor: pointer;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 4rem 1rem 4rem 1rem;
     font-size: 20px;

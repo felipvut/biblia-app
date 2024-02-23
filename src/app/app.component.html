@@ -2,22 +2,22 @@
 <mat-drawer-container class="container" autosize>
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <h2>Bíblia</h2>
+      <h2 style="padding-left: 3rem;">Bíblia</h2>
       <span class="spacer"></span>
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
     </mat-toolbar-row>
   </mat-toolbar>
-  <router-outlet></router-outlet>
-  <mat-drawer #drawer class="sidenav" mode="side">
-    <div class="sidebar-item">
+  <mat-drawer #drawer class="sidenav" mode="over">
+    <div [routerLink]="['/livros/6']" class="sidebar-item">
       <mat-icon>book</mat-icon>
       <a>Livros</a>
     </div>
-    <div class="sidebar-item">
+    <div [routerLink]="['/versoes']" class="sidebar-item">
       <mat-icon>bookmark</mat-icon>
       <a>Versões</a>
     </div>
   </mat-drawer>
+  <router-outlet></router-outlet>
 </mat-drawer-container>

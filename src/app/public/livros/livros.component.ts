@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import axios from 'axios';
 import { Eviroment } from 'src/app/enviroment/enviroment';
 
@@ -9,7 +10,15 @@ import { Eviroment } from 'src/app/enviroment/enviroment';
 })
 export class LivrosComponent extends Eviroment implements OnInit {
 
+  version: any = null
+  constructor(
+    private activatedRoute : ActivatedRoute,
+  ) {
+    super();
+  }
+
   ngOnInit(): void {
+    this.version = this.activatedRoute.snapshot.paramMap.get("version")
     this.getLivros()
   }
 
@@ -27,6 +36,5 @@ export class LivrosComponent extends Eviroment implements OnInit {
         }
       }
     }
-    console.log(this.livros)
   }
 }

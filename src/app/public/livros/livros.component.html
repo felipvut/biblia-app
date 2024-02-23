@@ -1,14 +1,18 @@
 <div class="container">
-    <div>
+    <div class="item">
         <h1>Antigo Testamento</h1>
-        <div *ngFor="let x of antigoTestamento">
-            <a href="http://localhost:4200/6/{{x.liv_id}}/1" class="link">{{x.liv_nome}}</a>
+        <div class="column">
+            <div style="padding: 0.5rem;" *ngFor="let x of antigoTestamento">
+                <a  [routerLink]="['/' + version + '/' + x.liv_abreviado + '/'+ 1]" class="link">{{x.liv_nome}}</a>
+            </div>
         </div>
     </div>
-    <div>
+    <div class="item">
         <h1>Novo Testamento</h1>
-        <div *ngFor="let x of novoTestamento">
-            <a href="http://localhost:4200/6/{{x.liv_id}}/1" class="link">{{x.liv_nome}}</a>
+        <div class="column">
+            <div style="padding: 1rem;" *ngFor="let x of novoTestamento">
+                <a [routerLink]="['/' + version + '/' + x.liv_abreviado + '/'+ 1]" class="link">{{x.liv_nome}}</a>
+            </div>
         </div>
     </div>
 </div>

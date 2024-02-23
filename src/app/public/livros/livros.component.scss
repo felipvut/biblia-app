@@ -8,3 +8,10 @@
     font-size: 16px;
     padding: 0.5rem;
 }
+.column{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.item{
+    padding-left: 3rem;
+}

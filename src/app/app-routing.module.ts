@@ -6,9 +6,9 @@ import { VersoesComponent } from './public/versoes/versoes.component';
 
 const routes: Routes = [
   {path: ":version/:book/:capitule", component: ReadCapComponent},
-  {path: "livros", component: LivrosComponent},
+  {path: "livros/:version", component: LivrosComponent},
   {path: "versoes", component: VersoesComponent},
-  {path: "**", redirectTo: "6/1/1"}
+  {path: "**", redirectTo: "versoes"}
 ];
 
 @NgModule({
