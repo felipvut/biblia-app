@@ -1,6 +1,6 @@
 <div class="container">
     <div class="item">
-        <h1>Antigo Testamento</h1>
+        <h1 class="title">Antigo Testamento</h1>
         <div class="column">
             <div style="padding: 0.5rem;" *ngFor="let x of antigoTestamento">
                 <a  [routerLink]="['/' + version + '/' + x.liv_abreviado + '/'+ 1]" class="link">{{x.liv_nome}}</a>
@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="item">
-        <h1>Novo Testamento</h1>
+        <h1 class="title titleNovo">Novo Testamento</h1>
         <div class="column">
             <div style="padding: 1rem;" *ngFor="let x of novoTestamento">
                 <a [routerLink]="['/' + version + '/' + x.liv_abreviado + '/'+ 1]" class="link">{{x.liv_nome}}</a>

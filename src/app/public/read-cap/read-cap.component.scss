@@ -1,9 +1,4 @@
 
-.content {
-    display: grid;
-    grid-template-columns: 57% 43%;
-    width: 100%;
-}
 .verse {
     font-weight: 300;
 }
@@ -45,9 +40,26 @@
 .example-full-width {
     width: 100%;
 }
-.text-content{
-    padding: 1rem 1rem 4.5rem 4rem;
-}
-.search-content{
-    padding: 1rem;
+
+@media (max-width: 800px) {
+    .search-content{
+        display: none;
+    }
+    .text-content{
+        padding: 1.3rem;
+    }
+  }
+  
+@media (min-width: 800px) {
+    .search-content{
+        padding: 1rem;
+    }
+    .content {
+        display: grid;
+        grid-template-columns: 57% 43%;
+        width: 100%;
+    }
+    .text-content{
+        padding: 1rem 1rem 4.5rem 4rem;
+    }
 }

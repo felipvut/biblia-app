@@ -26,3 +26,12 @@
     padding: 4rem 1rem 4rem 1rem;
     font-size: 20px;
 }
+
+@media (max-width: 800px) {
+}
+
+@media (min-width: 800px) {
+  .title{
+    padding-left: 3rem;
+  }
+}

@@ -72,8 +72,6 @@ export class ReadCapComponent extends Eviroment implements OnInit {
         }
       }
     }
-    console.log(this.livroNext)
-    console.log(this.livroPrevius)
     }
 
   next(){
@@ -88,10 +86,11 @@ export class ReadCapComponent extends Eviroment implements OnInit {
     }
   }
 
-  previous(){
+  async previous(){
     if(!this.capitulos[Number(this.capitule -1) -1]) {
       if(this.livroNext?.liv_abreviado) {
-        this.router.navigate(['/'+this.version+'/' + this.livroPrevius.liv_abreviado +'/1'])
+        let capitulesPrevius = (await axios.get(`${this.url}/capitules/${this.livroPrevius?.liv_abreviado}`)).data
+        this.router.navigate(['/'+this.version+'/' + this.livroPrevius.liv_abreviado +'/' + capitulesPrevius[capitulesPrevius.length - 1]['ver_capitulo']])
       } else {
         return
       }

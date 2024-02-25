@@ -1,9 +1,22 @@
-.container {
-    margin: 1rem;
-    padding-left: 5rem;
-}
-.link{
-    color: #3a8ed7;
-    font-size: 16px;
-    padding: 0.5rem;
+@media (max-width: 800px) {
+    .container {
+        margin: 1rem;
+        padding: 0;
+    }
+    .link{
+        color: #3a8ed7;
+        font-size: 16px;
+    }
+  }
+  
+@media (min-width: 800px) {
+  .container {
+      margin: 1rem;
+      padding-left: 5rem;
+  }
+  .link{
+      color: #3a8ed7;
+      font-size: 16px;
+      padding: 0.5rem;
+  }
 }
