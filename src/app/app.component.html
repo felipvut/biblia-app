@@ -2,7 +2,7 @@
 <mat-drawer-container class="container" autosize>
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <h2 class="title">Bíblia</h2>
+      <h2 [routerLink]="['/livros/6']" class="sidebar-item" class="title">Bíblia</h2>
       <span class="spacer"></span>
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
