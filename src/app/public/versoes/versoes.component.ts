@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
-import { Eviroment } from 'src/app/enviroment/enviroment';
+import { Eviroment } from 'src/enviroment/enviroment';
 
 @Component({
   selector: 'app-versoes',

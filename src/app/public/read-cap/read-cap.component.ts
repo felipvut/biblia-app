@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import { Eviroment } from 'src/app/enviroment/enviroment';
+import { Eviroment } from 'src/enviroment/enviroment';
 
 @Component({
   selector: 'app-read-cap',
