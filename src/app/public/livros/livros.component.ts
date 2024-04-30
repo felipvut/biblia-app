@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import axios from 'axios';
+import { LivrosService } from 'src/app/services/livros.service';
 import { Enviroment } from 'src/enviroment/enviroment';
 
 @Component({
@@ -10,8 +10,13 @@ import { Enviroment } from 'src/enviroment/enviroment';
 })
 export class LivrosComponent extends Enviroment implements OnInit {
 
+  livros: any[] = []
+  antigoTestamento: any[] = []
+  novoTestamento: any[] = []
   version: any = null
+
   constructor(
+    protected service: LivrosService,
     private activatedRoute : ActivatedRoute,
   ) {
     super();
@@ -22,19 +27,18 @@ export class LivrosComponent extends Enviroment implements OnInit {
     this.getLivros()
   }
 
-  livros: any[] = []
-  antigoTestamento: any[] = []
-  novoTestamento: any[] = []
-  async getLivros() {
-    this.livros = (await axios.get(this.url + "/livros")).data
-    if(this.livros) {
-      for(let x of this.livros) {
-        if(x.liv_tes_id == 1) {
-          this.antigoTestamento.push(x)
-        } else {
-          this.novoTestamento.push(x)
+  getLivros() {
+    this.service.get().subscribe(result => {
+      this.livros = result
+      if(this.livros) {
+        for(let x of this.livros) {
+          if(x.liv_tes_id == 1) {
+            this.antigoTestamento.push(x)
+          } else {
+            this.novoTestamento.push(x)
+          }
         }
       }
-    }
+    })
   }
 }

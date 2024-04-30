@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { LivrosComponent } from './public/livros/livros.component';
 import { VersoesComponent } from './public/versoes/versoes.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { VersoesComponent } from './public/versoes/versoes.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
