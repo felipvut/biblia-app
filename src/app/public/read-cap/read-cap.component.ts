@@ -56,6 +56,15 @@ export class ReadCapComponent extends Eviroment implements OnInit {
     const capitulos = await axios.get(`${this.url}/capitules/${this.book}`)
     if(capitulos) {
       this.capitulos = capitulos.data
+      this.capitulos.sort((a: any, b: any) => {
+        if(a.ver_capitulo < b.ver_capitulo ) {
+          return -1
+        }
+        if(a.ver_capitulo > b.ver_capitulo ) {
+          return 1
+        }
+        return 0
+      })
     }
   }
 
