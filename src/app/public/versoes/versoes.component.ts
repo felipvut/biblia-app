@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
-import { Eviroment } from 'src/enviroment/enviroment';
+import { Enviroment } from 'src/enviroment/enviroment';
 
 @Component({
   selector: 'app-versoes',
   templateUrl: './versoes.component.html',
   styleUrls: ['./versoes.component.scss']
 })
-export class VersoesComponent extends Eviroment implements OnInit{
+export class VersoesComponent extends Enviroment implements OnInit{
 
   ngOnInit(): void {
     this.getVersoes()  

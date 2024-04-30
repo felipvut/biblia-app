@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import { Eviroment } from 'src/enviroment/enviroment';
+import { Enviroment } from 'src/enviroment/enviroment';
 
 @Component({
   selector: 'app-read-cap',
   templateUrl: './read-cap.component.html',
   styleUrls: ['./read-cap.component.scss']
 })
-export class ReadCapComponent extends Eviroment implements OnInit {
+export class ReadCapComponent extends Enviroment implements OnInit {
 
   version: any = null
   book: any = null

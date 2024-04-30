@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import axios from 'axios';
-import { Eviroment } from 'src/enviroment/enviroment';
+import { Enviroment } from 'src/enviroment/enviroment';
 
 @Component({
   selector: 'app-livros',
   templateUrl: './livros.component.html',
   styleUrls: ['./livros.component.scss']
 })
-export class LivrosComponent extends Eviroment implements OnInit {
+export class LivrosComponent extends Enviroment implements OnInit {
 
   version: any = null
   constructor(
