@@ -17,5 +17,6 @@ export class VersoesComponent extends Eviroment implements OnInit{
 
   async getVersoes() {
     this.versoes = (await axios.get(this.url + "/versoes")).data
+    this.versoes = [this.versoes[0]]
   }
 }
