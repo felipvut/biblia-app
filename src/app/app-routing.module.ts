@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: ":version/:book/:capitule", component: ReadCapComponent},
   {path: "livros/:version", component: LivrosComponent},
   {path: "versoes", component: VersoesComponent},
-  {path: "**", redirectTo: "versoes"}
+  {path: "**", redirectTo: "livros/1"}
 ];
 
 @NgModule({
