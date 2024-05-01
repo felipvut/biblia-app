@@ -41,3 +41,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 *{
   font-family: "Merriweather Sans", sans-serif;
 }
+.mat-drawer-content{
+  overflow-x: hidden !important;
+}
