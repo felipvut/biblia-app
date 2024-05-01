@@ -10,6 +10,7 @@ import { Enviroment } from 'src/enviroment/enviroment';
 })
 export class LivrosComponent extends Enviroment implements OnInit {
 
+  loading: boolean = false
   livros: any[] = []
   antigoTestamento: any[] = []
   novoTestamento: any[] = []
@@ -28,6 +29,7 @@ export class LivrosComponent extends Enviroment implements OnInit {
   }
 
   getLivros() {
+    this.loading = true
     this.service.get().subscribe(result => {
       this.livros = result
       if(this.livros) {
@@ -39,6 +41,7 @@ export class LivrosComponent extends Enviroment implements OnInit {
           }
         }
       }
+      this.loading = false
     })
   }
 }

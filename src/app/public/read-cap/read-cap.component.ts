@@ -12,6 +12,7 @@ import { Enviroment } from 'src/enviroment/enviroment';
 })
 export class ReadCapComponent extends Enviroment implements OnInit {
 
+  loading: boolean = false
   version: any = null
   book: any = null
   capitule: any = null
@@ -48,15 +49,18 @@ export class ReadCapComponent extends Enviroment implements OnInit {
   }
 
   getVersicules() {
+    this.loading = true
     this.service.getVersiculos(this.version, this.book, this.capitule)
     .subscribe(result => {
       this.livro = result?.livro
       this.versicules = result?.versicules
       this.getLivros()
+      this.loading = false
     })
   }
 
   getCapitules() {
+    this.loading = true
     this.service.getCapitulos(this.book).subscribe(result => {
       this.capitulos = result
       this.capitulos.sort((a: any, b: any) => {
@@ -68,10 +72,12 @@ export class ReadCapComponent extends Enviroment implements OnInit {
         }
         return 0
       })
+      this.loading = false
     })
   }
 
   getLivros() {
+    this.loading = true
     this.livrosService.get().subscribe(result => {
       this.livros = result
       for(let x in this.livros) {
@@ -84,6 +90,7 @@ export class ReadCapComponent extends Enviroment implements OnInit {
           }
         }
       }
+      this.loading = false
     })
     }
 
@@ -102,6 +109,7 @@ export class ReadCapComponent extends Enviroment implements OnInit {
   previous(){
     if(!this.capitulos[Number(this.capitule -1) -1]) {
       if(this.livroNext?.liv_abreviado) {
+        this.loading = true
         this.service.getCapitulos(this.livroPrevius?.liv_abreviado).subscribe(result => {
           result.sort((a: any, b: any) => {
             if(a.ver_capitulo < b.ver_capitulo ) {
@@ -112,6 +120,7 @@ export class ReadCapComponent extends Enviroment implements OnInit {
             }
             return 0
           })
+          this.loading = false
           this.router.navigate(['/'+this.version+'/' + this.livroPrevius.liv_abreviado +'/' + result[result.length - 1]['ver_capitulo']])
         })
       } else {

@@ -13,13 +13,16 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { LivrosComponent } from './public/livros/livros.component';
 import { VersoesComponent } from './public/versoes/versoes.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoadingComponent } from './utils/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReadCapComponent,
     LivrosComponent,
-    VersoesComponent
+    VersoesComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatInputModule,
     MatSidenavModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

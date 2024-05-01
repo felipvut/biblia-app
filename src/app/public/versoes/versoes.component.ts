@@ -10,6 +10,7 @@ import { Enviroment } from 'src/enviroment/enviroment';
 })
 export class VersoesComponent extends Enviroment implements OnInit{
 
+  loading: boolean = false
   constructor(
     protected service: VersoesService
   ) {
@@ -23,10 +24,12 @@ export class VersoesComponent extends Enviroment implements OnInit{
   versoes: any[] = []
 
   getVersoes() {
+    this.loading = true
     this.service.get().subscribe(result => {
       this.versoes = [
         result[0]
       ]
+      this.loading = false
     })
   }
 }
