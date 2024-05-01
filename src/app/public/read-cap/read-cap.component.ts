@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
+import { LivrosService } from 'src/app/services/livros.service';
+import { VersiculosService } from 'src/app/services/versiculos.service';
 import { Enviroment } from 'src/enviroment/enviroment';
 
 @Component({
@@ -22,6 +24,8 @@ export class ReadCapComponent extends Enviroment implements OnInit {
   capitulos: any = []
   
   constructor(
+    protected service: VersiculosService,
+    protected livrosService: LivrosService,
     private activatedRoute : ActivatedRoute,
     private router: Router,
   ) {
@@ -43,19 +47,18 @@ export class ReadCapComponent extends Enviroment implements OnInit {
     this.getCapitules()
   }
 
-  async getVersicules() {
-    const versicules = await axios.get(`${this.url}/versiculos/${this.version}/${this.book}/${this.capitule}`)
-    if(versicules) {
-      this.livro = versicules.data.livro
-      this.versicules = versicules.data.versicules
+  getVersicules() {
+    this.service.getVersiculos(this.version, this.book, this.capitule)
+    .subscribe(result => {
+      this.livro = result?.livro
+      this.versicules = result?.versicules
       this.getLivros()
-    }
+    })
   }
 
-  async getCapitules() {
-    const capitulos = await axios.get(`${this.url}/capitules/${this.book}`)
-    if(capitulos) {
-      this.capitulos = capitulos.data
+  getCapitules() {
+    this.service.getCapitulos(this.book).subscribe(result => {
+      this.capitulos = result
       this.capitulos.sort((a: any, b: any) => {
         if(a.ver_capitulo < b.ver_capitulo ) {
           return -1
@@ -65,22 +68,23 @@ export class ReadCapComponent extends Enviroment implements OnInit {
         }
         return 0
       })
-    }
+    })
   }
 
-  async getLivros() {
-    this.livros = await axios.get(this.url + "/livros")
-    this.livros = this.livros.data
-    for(let x in this.livros) {
-      if(this.livros[x].liv_nome == this.livro) {
-        if(this.livros[Number(x) + 1]) {
-          this.livroNext = this.livros[Number(x) + 1]
-        }
-        if(this.livros[Number(x) - 1]) {
-          this.livroPrevius = this.livros[Number(x) +- 1]
+  getLivros() {
+    this.livrosService.get().subscribe(result => {
+      this.livros = result
+      for(let x in this.livros) {
+        if(this.livros[x].liv_nome == this.livro) {
+          if(this.livros[Number(x) + 1]) {
+            this.livroNext = this.livros[Number(x) + 1]
+          }
+          if(this.livros[Number(x) - 1]) {
+            this.livroPrevius = this.livros[Number(x) +- 1]
+          }
         }
       }
-    }
+    })
     }
 
   next(){
@@ -95,11 +99,21 @@ export class ReadCapComponent extends Enviroment implements OnInit {
     }
   }
 
-  async previous(){
+  previous(){
     if(!this.capitulos[Number(this.capitule -1) -1]) {
       if(this.livroNext?.liv_abreviado) {
-        let capitulesPrevius = (await axios.get(`${this.url}/capitules/${this.livroPrevius?.liv_abreviado}`)).data
-        this.router.navigate(['/'+this.version+'/' + this.livroPrevius.liv_abreviado +'/' + capitulesPrevius[capitulesPrevius.length - 1]['ver_capitulo']])
+        this.service.getCapitulos(this.livroPrevius?.liv_abreviado).subscribe(result => {
+          result.sort((a: any, b: any) => {
+            if(a.ver_capitulo < b.ver_capitulo ) {
+              return -1
+            }
+            if(a.ver_capitulo > b.ver_capitulo ) {
+              return 1
+            }
+            return 0
+          })
+          this.router.navigate(['/'+this.version+'/' + this.livroPrevius.liv_abreviado +'/' + result[result.length - 1]['ver_capitulo']])
+        })
       } else {
         return
       }
