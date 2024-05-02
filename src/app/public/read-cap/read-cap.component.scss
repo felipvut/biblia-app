@@ -43,10 +43,13 @@
 
 @media (max-width: 800px) {
     .search-content{
-        display: none;
+        padding-bottom: 5rem;
+        h2{
+            padding-left: 1rem;
+        }
     }
     .text-content{
-        padding: 1.3rem 1.3rem 5rem 1.3rem;
+        padding: 1.3rem 1.3rem 1.5rem 1.3rem;
     }
   }
   
