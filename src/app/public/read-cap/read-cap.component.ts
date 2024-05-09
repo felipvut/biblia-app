@@ -76,6 +76,11 @@ export class ReadCapComponent extends Enviroment implements OnInit {
     })
   }
 
+  scrollTop() {
+    const page = document.getElementsByClassName('mat-drawer-content')[0]
+    page.scrollTop = 0
+  }
+
   getLivros() {
     this.loading = true
     this.livrosService.get().subscribe(result => {

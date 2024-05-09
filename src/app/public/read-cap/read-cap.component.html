@@ -9,7 +9,7 @@
         <h2>Capítulos</h2>
         <div class="navigation">
             <div class="box" *ngFor="let x of capitulos">
-                <a class="livro" [routerLink]="['/' + version + '/' + book + '/' + x.ver_capitulo]">{{x.ver_capitulo}}</a>
+                <a class="livro" [routerLink]="['/' + version + '/' + book + '/' + x.ver_capitulo]" (click)="scrollTop()">{{x.ver_capitulo}}</a>
             </div>
         </div>
     </div>
