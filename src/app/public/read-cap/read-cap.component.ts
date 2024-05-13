@@ -35,7 +35,6 @@ export class ReadCapComponent extends Enviroment implements OnInit {
       this.version = val['version']
       this.book = val['book']
       this.capitule = val['capitule']
-      this.getLivros()
       this.getCapitules()
       this.getVersicules()
     });
@@ -44,8 +43,6 @@ export class ReadCapComponent extends Enviroment implements OnInit {
     this.version = this.activatedRoute.snapshot.paramMap.get("version")
     this.book = this.activatedRoute.snapshot.paramMap.get("book")
     this.capitule = this.activatedRoute.snapshot.paramMap.get("capitule")
-    this.getVersicules()
-    this.getCapitules()
   }
 
   getVersicules() {
