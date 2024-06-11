@@ -15,6 +15,9 @@ import { VersoesComponent } from './public/versoes/versoes.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoadingComponent } from './utils/loading/loading.component';
+import { FormsModule } from '@angular/forms';
+import { CarrinhoComponent } from './compras/carrinho/carrinho.component';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,7 @@ import { LoadingComponent } from './utils/loading/loading.component';
     ReadCapComponent,
     LivrosComponent,
     VersoesComponent,
-    LoadingComponent
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,8 +37,9 @@ import { LoadingComponent } from './utils/loading/loading.component';
     MatInputModule,
     MatSidenavModule,
     HttpClientModule,
-    MatProgressSpinnerModule
-
+    MatProgressSpinnerModule,
+    FormsModule,
+    AsyncPipe
   ],
   providers: [],
   bootstrap: [AppComponent]

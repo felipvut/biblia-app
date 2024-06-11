@@ -7,7 +7,7 @@ import { VersoesComponent } from './public/versoes/versoes.component';
 const routes: Routes = [
   {path: ":version/:book/:capitule", component: ReadCapComponent},
   {path: "livros/:version", component: LivrosComponent},
-  {path: "versoes", component: VersoesComponent},
+  {path: "versoes/:version", component: VersoesComponent},
   {path: "**", redirectTo: "livros/1"}
 ];
 

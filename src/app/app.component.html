@@ -2,7 +2,7 @@
 <mat-drawer-container class="container" autosize>
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <h2 [routerLink]="['/livros/1']" class="sidebar-item" class="title">Bíblia</h2>
+      <h2 (click)="goToLivros()" class="sidebar-item" class="title">Bíblia</h2>
       <span class="spacer"></span>
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
@@ -10,11 +10,11 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-drawer #drawer class="sidenav" mode="over">
-    <div [routerLink]="['/livros/1']" class="sidebar-item">
+    <div (click)="goToLivros()" class="sidebar-item">
       <mat-icon>book</mat-icon>
       <a>Livros</a>
     </div>
-    <div [routerLink]="['/versoes']" class="sidebar-item">
+    <div (click)="goToVersoes()" class="sidebar-item">
       <mat-icon>bookmark</mat-icon>
       <a>Versões</a>
     </div>
