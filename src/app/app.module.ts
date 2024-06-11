@@ -16,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoadingComponent } from './utils/loading/loading.component';
 import { FormsModule } from '@angular/forms';
-import { CarrinhoComponent } from './compras/carrinho/carrinho.component';
 import { AsyncPipe } from '@angular/common';
 
 @NgModule({
